@@ -8,14 +8,19 @@ computadores trabalhando entre si para o mesmo objetivo.
 
 Databricks: Plataforma de análise de dados que trabalha com PaaS (Plataforma como Serviço). 
 Significa que é necessário ter o provedor de nuvem (AWS etc).
+
 Spark: plataforma de computação em cluster tolerante a falhas. Suporta diversas liguagens de 
 progração e tem elementos como SQL. O Databricks é dos mesmos criadores do Apache Spark.
+Ferramenta de processamento de dados (não é data storage); distribuído em um cluster;
+em memória; veloz; escalável; particionamento.
 
 Data warehouse: primeiros bancos de dados. Mesmos tipos de dados, salvos integralmente.
 Data lake: vários tipos de dados, nem sempre tratados.
 Delta lake: versão mais moderna do data lake. Fornece esquema de controle (garante que os dados 
 estejam em formatos corretos). Maior compatibilidade. Lake House: warehouse + delta lake; 
 implementação prática do delta lake.
+Lakehouse: arquitetura de dados moderna que combina o armazenamento barato e flexível de um data lake com a estrutura
+organizada e o desempenho de um data warehouse.
 
 Formatos para big data: Parquet (mais utilizado, colunar, melhor performance na consulta)
 , Apache Orc (colunar, mais eficiente na criação e na compressão), Avro (linha).
