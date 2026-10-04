@@ -17,6 +17,16 @@ Dataframe: tabelas com linhas e colunas. Unidade principal do spark. É imutáve
 com as alterações). Lake evaluation: o processamento de transformação de fato só ocorre quando há uma 
 ação). Tipo de dados do dataframe: ByteType, IntegerType, BooleanType etc. Schema: o Spark pode inferir
 a partir de parte dos dados, ou o usuário pode definir o esquema.
+Shuffle: redistribuição de dados entre partições.
+Particionamento: dados são particionados por padrão e dependem de vários fatores e configurações.
+Podemos particionar explicitamente em disco (partitionBy) ou em memória repartition() ou coalesce().
+Bucketing: número fixo de partições, ideal para coluna com alta cardinalidade, pode ser usado em conjunto
+com particionamento.
+Componentes do Spark: machine learning (Mlib), SQL (Spark SQL), processamento em streaming
+(para dados estruturados, em formato de tabelas) e processamento de grafos (GraphX). Permite ler 
+dados de várias fontes e pode usar sintaxe SQL. Job, stage (divisão do job), task (menor unidade de
+trabalho. Uma por núcleo e por partição.
+SparkContext: conexão transparente com o cluster. SparkSession: dá acesso ao SparkContext. 
 
 Data warehouse: primeiros bancos de dados. Mesmos tipos de dados, salvos integralmente.
 Data lake: vários tipos de dados, nem sempre tratados.
