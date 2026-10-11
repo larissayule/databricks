@@ -1,2 +1,49 @@
-Criando DataFrames:
+Data Frames: formato ideal para processamento de dados; dados efêmeros; são perdidos caso o cluster seja
+desligado, para persistência devem ser salvos fisicamente (parquet).
+
+Criando DataFrames: 
+df1 = spark.createDataFrame([("Pedro",10),("Maria",20),("José",40)])
+df1.show()
 workspace - três pontos (à direita) - import - seleciona o arquivo
+
+Para limpar todas as saídas: run - clear - clear all cells output
+Para indicar linguagem na célula: %python
+
+#criar df com schema
+schema = "Id INT, Nome STRING"
+dados = [[1,"Pedro"],[2,"Maria"]]
+df2 = spark.createDataFrame(dados, schema)
+df2.show()
+df2.show(1)
+#cria tabela temporária
+df2.createOrReplaceTempView("df2")
+
+%sql
+select * from df2
+Clicando a seta de Table, é possível fazer downloads em csv, dentre outros formatos
+
+Soma: import sum
+#com transformação. 
+from pyspark.sql.functions import sum
+schema2 = "Produtos STRING, Vendas INT"
+vendas = [["Caneta",10],["Lápis",20],["Caneta",40]]
+df3 = spark.createDataFrame(vendas , schema2 )
+agrupado = df3.groupBy("Produtos").agg(sum("Vendas"))
+agrupado.show()
+#podemos contatenar as operações, neste caso sem persitir
+df3.groupBy("Produtos").agg(sum("Vendas")).show()
+
+#selecionar colunas específicas
+df3.select("Produtos").show()
+df3.select("Produtos","Vendas").show()
+
+#expressões e select (para produzir expressões)
+from pyspark.sql.functions import expr
+df3.select("Produtos", "Vendas", expr("Vendas * 0.2")).show()
+
+#ver schema. Para visualizar, print()
+from pyspark.sql.types import StructType
+schema = df3.schema
+print(schema)
+
+
